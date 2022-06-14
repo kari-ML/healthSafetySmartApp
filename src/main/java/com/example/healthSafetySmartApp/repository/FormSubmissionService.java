@@ -1,11 +1,19 @@
 package com.example.healthSafetySmartApp.repository;
 
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.logging.Logger;
+
+@Slf4j
 @Service
 public class FormSubmissionService {
 
-    public void processForm(String name, String type) {
+    public void processForm(String type, String fname, String lname, String phone, String department, String campus, LocalDate date, String description, String infectionTracking) {
+        System.out.println(type + fname + lname + phone + department + campus + date + description + infectionTracking);
+
         switch (type) {
             case "Infection":
                 infectionFormProcess();
@@ -31,6 +39,10 @@ public class FormSubmissionService {
 
     private void accidentFormProcess() {
         System.out.println("Accident form submitted");
+    }
+
+    private void logFormToConsole() {
+
     }
 
 }
