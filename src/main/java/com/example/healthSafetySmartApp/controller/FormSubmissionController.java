@@ -1,11 +1,13 @@
 package com.example.healthSafetySmartApp.controller;
 
 import com.example.healthSafetySmartApp.entity.FormSubmission;
-import com.example.healthSafetySmartApp.repository.FormSubmissionService;
+import com.example.healthSafetySmartApp.service.FormSubmissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Arrays;
 import java.util.List;
@@ -40,5 +42,11 @@ public class FormSubmissionController {
         model.addAttribute("infectionTrackingTypeList", infectionTrackingTypeList);
 
         return "health_and_safety_form";
+    }
+
+    @PostMapping("/submit")
+    public String submitForm(@ModelAttribute("formSubmission") FormSubmission formSubmission) {
+        formSubmissionService.processFormByType(formSubmission);
+        return "submit_success";
     }
 }
