@@ -3,21 +3,20 @@ package com.example.healthSafetySmartApp.controller;
 import com.example.healthSafetySmartApp.entity.FormSubmission;
 import com.example.healthSafetySmartApp.repository.FormSubmissionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
-@RestController
+@Controller
 public class FormSubmissionController {
 
     @Autowired
     FormSubmissionService formSubmissionService;
 
-    @GetMapping(value = "/register")
+    @GetMapping(value = "/submit")
     public String showForm(Model model) {
 
         // Instance of the custom entity class 'formSubmission' to represent exactly that
@@ -31,6 +30,15 @@ public class FormSubmissionController {
         List<String> formTypeList = Arrays.asList("Infection", "Accident", "Incident");
         model.addAttribute("formTypeList", formTypeList);
 
-        return "register_form";
+        // We add a List containing the infection tracking types to the model
+        List<String> infectionTrackingTypeList = Arrays.asList(
+                "I have tested positive for infection ",
+                "I have been in close contact with someone who has tested positive for infection ",
+                "A member of my household has been in contact with someone who has tested positive for infection",
+                "I have tested negative but I have symptoms of infection"
+        );
+        model.addAttribute("infectionTrackingTypeList", infectionTrackingTypeList);
+
+        return "health_and_safety_form";
     }
 }
