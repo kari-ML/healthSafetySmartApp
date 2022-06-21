@@ -1,7 +1,14 @@
 package com.example.healthSafetySmartApp.entity;
 
+import lombok.*;
+
 import java.time.LocalDate;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class FormSubmission {
     private String type;
     private String firstName;
@@ -12,5 +19,4 @@ public class FormSubmission {
     private LocalDate date;
     private String description;
     private String infectionTracking;
-
 }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Form Submission</title>
+</head>
+<body>
+<div align="center">
+    <h1>Form Submission/h1>
+    <form action="#" th:action="@{/register}" method="post" th:object="${formSubmission}">
+        <label>Type:</label>
+        <select th:field="*{type}">
+            <option th:each="p : ${formTypeList}" th:value="${p}" th:text="${p}" />
+        </select>
+
+        <label>First name:</label>
+        <input type="text" th:field="*{firstName}" /><br/>
+
+        <label>Last name:</label>
+        <input type="text" th:field="*{lastName}" /><br/>
+
+        <label>Contact number:</label>
+        <input type="number" th:field="*{phone}" /><br/>
+
+        <label>Department:</label>
+        <input type="text" th:field="*{department}" /><br/>
+
+        <label>Campus:</label>
+        <input type="text" th:field="*{campus}" /><br/>
+
+        <label>Date:</label>
+        <input type="date" th:field="*{date}"
+               value="2022-06-01"
+               min="2022-01-01" max="2022-12-31"><br/>
+
+        <label>Description:</label>
+        <textarea rows="5" cols="25" th:field="*{description}"></textarea>
+        <br/>
+
+        <label>Infection tracking:</label>
+        <input type="radio" th:field="*{infectionTracking}" value="testedPos" />I have tested positive for infection
+        <input type="radio" th:field="*{infectionTracking}" value="closeContact" />I have been in close contact with someone who has tested positive for infection
+        <input type="radio" th:field="*{infectionTracking}" value="householdContact" />A member of my household has been in contact with someone who has tested positive for infection
+        <input type="radio" th:field="*{infectionTracking}" value="symptomsNeg" />I have tested negative but I have symptoms of infection<br/>
+        <br/>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>
