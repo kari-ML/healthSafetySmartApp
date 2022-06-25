@@ -7,6 +7,10 @@ import org.springframework.stereotype.Repository;
 /**
  * This is the 'persistence layer' of my application.
  *
+ * @Repository annotation is used to mark this interface as a repository to catch any persistence-specific exceptions,
+ * and to re-throw them as one of Spring's unified unchecked exceptions. This annotation also includes @Component,
+ * instructing Spring to register this interface as a @Bean and store it inside the ApplicationContext.
+ *
  * This part of my application uses Spring Data JPA, which allows me to define how my database should be interacted
  * with, without providing the how (like all interfaces).
  *

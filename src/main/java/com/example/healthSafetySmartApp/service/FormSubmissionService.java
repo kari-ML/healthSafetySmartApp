@@ -10,7 +10,10 @@ import org.springframework.stereotype.Service;
 
 /**
  * This is the 'service layer' of my application.
- * This is where all of the business logic is stored.
+ * This is where all of the business logic is stored, which is signalled by the use of the @Service annotation.
+ * It does not have any other special function other than that.
+ * This annotation also includes @Component, instructing Spring to register this interface as a @Bean and store
+ * it inside the ApplicationContext.
  */
 @Slf4j
 @Service
