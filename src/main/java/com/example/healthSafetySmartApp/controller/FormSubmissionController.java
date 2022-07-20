@@ -49,7 +49,7 @@ public class FormSubmissionController {
         // We add the instance of 'formSubmission' above to the model, to capture the user's input.
         model.addAttribute("formSubmission", formSubmission);
 
-        // We add a List containing the form types to the model to the model.
+        // We add a List containing the form types to the model.
         // This means I do not need to write this information directly in the html (view layer)
         List<String> formTypeList = Arrays.asList("Infection", "Accident", "Incident");
         model.addAttribute("formTypeList", formTypeList);
